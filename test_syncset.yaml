@@ -1,0 +1,17 @@
+apiVersion: hive.openshift.io/v1
+kind: SyncSet
+metadata:
+  name: firefly-syncset
+  namespace: aro-978a51b5-e60e-4383-b6b9-f6a02ff9f064
+spec:
+  clusterDeploymentRefs:
+  - name: cluster
+
+  patches:
+  - kind: Deployment
+    apiVersion: apps/v1
+    name: aro-operator-worker
+    namespace: openshift-azure-operator
+    patch: |-
+      { "spec": { "replicas": 2 } }
+    patchType: strategic

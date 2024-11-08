@@ -1,0 +1,16 @@
+apiVersion: hive.openshift.io/v1
+kind: SelectorSyncSet
+metadata:
+  name: openshift-azure-syncset-deploy-partial-fail
+spec:
+  resources:
+  - apiVersion: v1
+    kind: ConfigMap
+    metadata:
+      name: openshift-azure-syncset-configmap
+      namespace: test-project-hivesyncset
+    data:
+      label: openshift-azure-syncset-configmap
+  clusterDeploymentSelector:
+    matchLabels:
+      aro-sre: test-clusters
